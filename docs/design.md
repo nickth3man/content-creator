@@ -7,12 +7,14 @@
 > Notes for AI: Keep it simple. Convert abstract asks into concrete user stories.
 
 ### User stories
+
 - As a marketer, I want text-only content for Reddit, TikTok, Instagram, Twitter, Blog, Email, YouTube, Facebook, LinkedIn, Bluesky that fits each platform.
 - As a brand manager, I want outputs aligned to brand values from a free-text brand brief and extracted tags.
 - As a creator, I want a web form intake, live progress, and copy-ready artifacts per platform.
 - As a user, I want each artifact to be easy to copy without extra formatting steps.
 
 ### Scope and constraints
+
 - Text generation only. No publishing. No scraping.
 - Outputs are copy-ready blocks per platform. No packaging requirements beyond simple Markdown export when requested.
 - Inputs:
@@ -29,6 +31,7 @@
 - Presets stored locally in JSON when saved by user.
 
 ### Success criteria
+
 - Each output obeys platform guidelines and style policy.
 - Validation loop runs up to 5 iterations, then final validation runs.
 - Artifacts are frictionless to copy per platform. No extra cleanup needed.
@@ -92,16 +95,16 @@ flowchart TD
 
 > Notes for AI: Build a unified Guidelines schema per platform: limits, structure, tone, hashtags, links, markdown, CTA, extra notes.
 
-* **Reddit**: Use pasted rules and description. Require TL;DR if long. Markdown blocks allowed. Flair notes optional.
-* **TikTok**: Caption length, hook first line, 0–5 hashtags, optional emojis, time-based prompts from video topic or transcript.
-* **Instagram**: Caption with line breaks, 8–20 hashtags, CTA variant, include 2–3 short prompts for image generation.
-* **Twitter**: Single or threaded logic by character count threshold. 0–3 hashtags.
-* **Blog**: H2 or H3 outline, internal links placeholders, summary and CTA.
-* **Email**: Subject length target. Single CTA. Modes: first message, notification, newsletter, reply-from-thread.
-* **YouTube**: 1–3 paragraph description and tags. Pull topic or provided transcript.
-* **Facebook**: 1–2 paragraph post plus optional first comment text.
-* **LinkedIn**: Short paragraphs, whitespace, hashtags at end.
-* **Bluesky**: Micro-post format similar to Twitter.
+- **Reddit**: Use pasted rules and description. Require TL;DR if long. Markdown blocks allowed. Flair notes optional.
+- **TikTok**: Caption length, hook first line, 0–5 hashtags, optional emojis, time-based prompts from video topic or transcript.
+- **Instagram**: Caption with line breaks, 8–20 hashtags, CTA variant, include 2–3 short prompts for image generation.
+- **Twitter**: Single or threaded logic by character count threshold. 0–3 hashtags.
+- **Blog**: H2 or H3 outline, internal links placeholders, summary and CTA.
+- **Email**: Subject length target. Single CTA. Modes: first message, notification, newsletter, reply-from-thread.
+- **YouTube**: 1–3 paragraph description and tags. Pull topic or provided transcript.
+- **Facebook**: 1–2 paragraph post plus optional first comment text.
+- **LinkedIn**: Short paragraphs, whitespace, hashtags at end.
+- **Bluesky**: Micro-post format similar to Twitter.
 
 ---
 
@@ -369,15 +372,15 @@ shared = {
 
 **Automate ~60%**
 
-* Tag extraction, guideline generation, scaffolding, first drafts, sanitization pass, compliance checks, simple export.
+- Tag extraction, guideline generation, scaffolding, first drafts, sanitization pass, compliance checks, simple export.
 
 **Assist ~30%**
 
-* Voice tuning suggestions, fact triage list, brand alignment suggestions, hashtag set variants.
+- Voice tuning suggestions, fact triage list, brand alignment suggestions, hashtag set variants.
 
 **Manual ~10%**
 
-* Final edits, subreddit rule compliance check, legal review if needed, acceptance sign-off.
+- Final edits, subreddit rule compliance check, legal review if needed, acceptance sign-off.
 
 ---
 
@@ -387,13 +390,13 @@ shared = {
 
 ### Scope v1.0
 
-* Platforms: Reddit, Instagram, Twitter, Blog, Email, LinkedIn.
-* Inputs: brand brief, topic, subreddit fields, email thread, optional IG image prompt output.
-* Outputs: per-platform copy blocks. Optional Markdown bundle.
+- Platforms: Reddit, Instagram, Twitter, Blog, Email, LinkedIn.
+- Inputs: brand brief, topic, subreddit fields, email thread, optional IG image prompt output.
+- Outputs: per-platform copy blocks. Optional Markdown bundle.
 
 ### Non-goals v1.0
 
-* Publishing. External scraping. Auto video transcript fetch. Any ROI analytics.
+- Publishing. External scraping. Auto video transcript fetch. Any ROI analytics.
 
 ### Acceptance tests
 
@@ -407,8 +410,8 @@ shared = {
 
 ### Rollback
 
-* If StyleCompliance fails at 5, attach EditCycleReport, mark manual_review, and ship latest drafts.
-* If a platform node errors, skip that node, flag in package, and continue others.
+- If StyleCompliance fails at 5, attach EditCycleReport, mark manual_review, and ship latest drafts.
+- If a platform node errors, skip that node, flag in package, and continue others.
 
 ---
 
@@ -416,32 +419,32 @@ shared = {
 
 ### Before run
 
-* Paste subreddit rules and description if Reddit selected.
-* Paste email thread if reply mode.
-* For TikTok or YouTube later versions, paste transcript if available.
+- Paste subreddit rules and description if Reddit selected.
+- Paste email thread if reply mode.
+- For TikTok or YouTube later versions, paste transcript if available.
 
 ### After run
 
-* Review EditCycleReport when present.
-* Approve or request one targeted rewrite.
-* Copy blocks or export Markdown on demand.
+- Review EditCycleReport when present.
+- Approve or request one targeted rewrite.
+- Copy blocks or export Markdown on demand.
 
 ### Edge cases
 
-* Claims without sources → redact or add citation.
-* Topics with sensitive content → route to legal or compliance.
-* Brand bans list conflicts → override only with written approval.
+- Claims without sources → redact or add citation.
+- Topics with sensitive content → route to legal or compliance.
+- Brand bans list conflicts → override only with written approval.
 
 ---
 
 ## Instrumentation
 
-* **Metrics**: runtime per run, failure rate, revision_count mean, violations histogram, user edits after delivery.
-* **Logs**: stage durations and validation outcomes.
+- **Metrics**: runtime per run, failure rate, revision_count mean, violations histogram, user edits after delivery.
+- **Logs**: stage durations and validation outcomes.
 
 ---
 
 ## File Outputs
 
-* Per-platform `.md` files when requested.
-* On-screen copy blocks with single-click copy.
+- Per-platform `.md` files when requested.
+- On-screen copy blocks with single-click copy.
